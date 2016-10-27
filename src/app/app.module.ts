@@ -10,12 +10,16 @@ import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularcla
  */
 import { ENV_PROVIDERS } from './environment';
 import { ROUTES } from './app.routes';
+import { HttpClient } from '../services/HttpClient'
 // App is our top level component
 import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+import { AboutComponent } from './home/about';
+import { LandingComponent } from './home/landing';
+import { LoginComponent } from './home/login';
+import { DashboardComponent } from './dashboard';
 import { NoContentComponent } from './no-content';
 import { XLarge } from './home/x-large';
 
@@ -40,7 +44,10 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
+    LandingComponent,
+    LoginComponent,
     NoContentComponent,
+    DashboardComponent,
     XLarge
   ],
   imports: [ // import Angular's modules
@@ -51,7 +58,9 @@ type StoreType = {
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    HttpClient
+
   ]
 })
 export class AppModule {
